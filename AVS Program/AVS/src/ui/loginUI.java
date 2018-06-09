@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package avs;
+package ui;
 
 /**
  *
@@ -170,7 +170,7 @@ public class loginUI extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(130, 80, 310, 230);
+        jPanel2.setBounds(140, 80, 310, 230);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
