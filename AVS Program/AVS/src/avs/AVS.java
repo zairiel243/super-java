@@ -5,9 +5,9 @@
  */
 package avs;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  *
@@ -17,78 +17,60 @@ public class AVS {
 
     /**
      * @param args the command line arguments
+     **/
+    
+    /*
+     * Superuser
      */
-    public class User{
-        private String first_name;
-        private String last_name;
-        private String username;
-        private String password;
-        private String type;
-        
-        /*
-         * Constructor
-         */
-        public User(String first_name, String last_name, String username, String password, String type){
-            this.first_name = first_name;
-            this.last_name = last_name;
-            this.username = username;
-            this.password = password;
-            this.type = type;
-        }
-        
-        /*
-         * Setters
-         */
-        public void setFirst_name(String first_name){
-            this.first_name = first_name;
-        }
-        public void setLast_name(String last_name){
-            this.last_name = last_name;
-        }
-        public void setUsername(String username){
-            this.username = username;
-        }
-        public void setPassword(String password){
-            this.password = password;
-        }
-        public void setType(String type){
-            this.type = type;
-        }
-        
-        /*
-         * Getters
-         */
-        public String getFirst_name(){
-            return this.first_name;
-        }
-        public String getLast_name(){
-            return this.last_name;
-        }
-        public String getUsername(){
-            return this.username;
-        }
-        public String getType(){
-            return this.type;
-        }
-        
-    }
+    static Users p1 = new Users("super", "user", "superuser", "password", "Superuser");
     
-    public static Map<String, User> users = new HashMap<>();
+    /*
+     * Officer
+     */
+    static Users p2 = new Users("officer", "1", "officer1", "password", "Officer");
+    static Users p3 = new Users("officer", "2", "officer2", "password", "Officer");
     
-    public boolean checkCredentials(String username, String password){
-        boolean flag;
-        User user = users.get(username);
-        
-        if (user == null){
-            flag = false;
-        }else{
-            flag = (password.equals(user.password)); 
-        }
-        return flag;
-    }
+    /*
+     * Voter
+     */
+    static Users p4 = new Users("voter", "1", "voter1", "password", "Voter");
+    static Users p5 = new Users("voter", "2", "voter2", "password", "Voter");
+    static Users p6 = new Users("voter", "3", "voter3", "password", "Voter");
+    
+    /*
+     * Presidents (3)
+     */
+    
+    /*
+     * Vice-Presidents (3)
+     */
+    
+    /*
+     * Senators (10)
+     */
+    
+    /*
+     * Governors (3)
+     */
+    
+    /*
+     * Mayors (3)
+     */
+    
+    /*
+     * District Representatives (10)
+     */
+    
+
+    public static Map<String, Users> user = new HashMap<>();
+    public static Map<String, Candidates> candidate = new HashMap<>();
     
     public static void main(String[] args) {
-        // TODO code application logic here
+        user.put("superuser", p1);
+        user.put("officer1", p2);
+        user.put("officer2", p3);
+        user.put("voter1", p4);
+        user.put("voter2", p5);
+        user.put("voter3", p6);
     }
-    
 }
