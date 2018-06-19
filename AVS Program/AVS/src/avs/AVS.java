@@ -9,9 +9,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/**
+/** History
  *
- * @author student
+ * @author John Paul Jayme
+ * Last updated : 6-19-18
+ * Added comments to each variable and some operations.
+ * Updated variable names for meaning.
  */
 public class AVS {
 
@@ -97,55 +100,64 @@ public class AVS {
     static Candidates p37 = new Candidates("Lavrentiy", "Beria", "District Representative", "Communist", "officer1");
     static Candidates p38 = new Candidates("Alexei", "Kosygin", "District Representative", "Communist", "officer2");
 
-    public static Map<String, Users> user = new HashMap<>();
-    public static Map<Integer, Candidates> candidate = new HashMap<>();
+    /****** Variables ********************************************************/
+    public static Map<String, Users> users = new HashMap<>();
+    public static Map<Integer, Candidates> candidates = new HashMap<>();
     public static Map<String, Integer> candidate_count = new HashMap<>();
+    /***********************************************************************/
     
     public static void main(String[] args) {
-        user.put("superuser", p1);
-        user.put("officer1", p2);
-        user.put("officer2", p3);
-        user.put("voter1", p4);
-        user.put("voter2", p5);
-        user.put("voter3", p6);
         
-        candidate.put(p7.getId(), p7);
-        candidate.put(p8.getId(), p8);
-        candidate.put(p9.getId(), p9);
-        candidate.put(p11.getId(), p11);
-        candidate.put(p12.getId(), p12);
-        candidate.put(p13.getId(), p13);
-        candidate.put(p14.getId(), p14);
-        candidate.put(p15.getId(), p15);
-        candidate.put(p16.getId(), p16);
-        candidate.put(p17.getId(), p17);
-        candidate.put(p18.getId(), p18);
-        candidate.put(p19.getId(), p19);
-        candidate.put(p20.getId(), p20);
-        candidate.put(p21.getId(), p21);
-        candidate.put(p22.getId(), p22);
-        candidate.put(p23.getId(), p23);
-        candidate.put(p24.getId(), p24);
-        candidate.put(p25.getId(), p25);
-        candidate.put(p26.getId(), p26);
-        candidate.put(p27.getId(), p27);
-        candidate.put(p28.getId(), p28);
-        candidate.put(p29.getId(), p29);
-        candidate.put(p30.getId(), p30);
-        candidate.put(p31.getId(), p31);
-        candidate.put(p32.getId(), p32);
-        candidate.put(p33.getId(), p33);
-        candidate.put(p34.getId(), p34);
-        candidate.put(p35.getId(), p35);
-        candidate.put(p36.getId(), p36);
-        candidate.put(p37.getId(), p37);
-        candidate.put(p38.getId(), p38);
+        /****** Populate users*******/
+        users.put("superuser", p1);
+        users.put("officer1", p2);
+        users.put("officer2", p3);
+        users.put("voter1", p4);
+        users.put("voter2", p5);
+        users.put("voter3", p6);
+        /***************************/
         
+        /***** Populate candidates*******/
+        candidates.put(p7.getId(), p7);
+        candidates.put(p8.getId(), p8);
+        candidates.put(p9.getId(), p9);
+        candidates.put(p11.getId(), p11);
+        candidates.put(p12.getId(), p12);
+        candidates.put(p13.getId(), p13);
+        candidates.put(p14.getId(), p14);
+        candidates.put(p15.getId(), p15);
+        candidates.put(p16.getId(), p16);
+        candidates.put(p17.getId(), p17);
+        candidates.put(p18.getId(), p18);
+        candidates.put(p19.getId(), p19);
+        candidates.put(p20.getId(), p20);
+        candidates.put(p21.getId(), p21);
+        candidates.put(p22.getId(), p22);
+        candidates.put(p23.getId(), p23);
+        candidates.put(p24.getId(), p24);
+        candidates.put(p25.getId(), p25);
+        candidates.put(p26.getId(), p26);
+        candidates.put(p27.getId(), p27);
+        candidates.put(p28.getId(), p28);
+        candidates.put(p29.getId(), p29);
+        candidates.put(p30.getId(), p30);
+        candidates.put(p31.getId(), p31);
+        candidates.put(p32.getId(), p32);
+        candidates.put(p33.getId(), p33);
+        candidates.put(p34.getId(), p34);
+        candidates.put(p35.getId(), p35);
+        candidates.put(p36.getId(), p36);
+        candidates.put(p37.getId(), p37);
+        candidates.put(p38.getId(), p38);
+        /**********************************/
+        
+        /****** Populate candidate count per category******/
         candidate_count.put("President", 3);
         candidate_count.put("Vice-President", 3);
         candidate_count.put("Senators", 10);
         candidate_count.put("District Representative", 10);
         candidate_count.put("Governor", 3);
         candidate_count.put("Mayor", 3);
+        /**************************************************/
     }
 }
