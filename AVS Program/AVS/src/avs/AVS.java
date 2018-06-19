@@ -15,6 +15,8 @@ import java.util.Map;
  * Last updated : 6-19-18
  * Added comments to each variable and some operations.
  * Updated variable names for meaning.
+ * Added setters and getters
+ * 
  */
 public class AVS {
 
@@ -101,23 +103,56 @@ public class AVS {
     static Candidates p38 = new Candidates("Alexei", "Kosygin", "District Representative", "Communist", "officer2");
 
     /****** Variables ********************************************************/
-    public static Map<String, Users> users = new HashMap<>();
-    public static Map<Integer, Candidates> candidates = new HashMap<>();
-    public static Map<String, Integer> candidate_count = new HashMap<>();
+    private static Map<String, Users> users = new HashMap<>();
+    private static Map<Integer, Candidates> candidates = new HashMap<>();
+    private static Map<String, Integer> candidate_count = new HashMap<>();
     /***********************************************************************/
     
     public static void main(String[] args) {
         
-        /****** Populate users*******/
+       
+        AVS avs = new AVS();
+        
+        //Populate users
+        avs.setUsers();
+        //Populate candidates
+        avs.setCandidates();
+        //Populate candidate count per category
+        avs.setCandidateCount();
+       
+    }
+    
+    
+    /*** getters ***/
+    
+    public Map<String, Users> getUsers(){
+        return users;
+    }
+    
+    public Map<Integer, Candidates> getCandidates(){
+        return candidates;
+    }
+    
+    public Map<String, Integer> getCandidateCount(){
+        return candidate_count;
+    }
+    
+
+    
+    /**** setters ****/
+    private void setUsers(){
+        
         users.put("superuser", p1);
         users.put("officer1", p2);
         users.put("officer2", p3);
         users.put("voter1", p4);
         users.put("voter2", p5);
         users.put("voter3", p6);
-        /***************************/
+    
+    }
+    
+    private void setCandidates(){
         
-        /***** Populate candidates*******/
         candidates.put(p7.getId(), p7);
         candidates.put(p8.getId(), p8);
         candidates.put(p9.getId(), p9);
@@ -149,15 +184,19 @@ public class AVS {
         candidates.put(p36.getId(), p36);
         candidates.put(p37.getId(), p37);
         candidates.put(p38.getId(), p38);
-        /**********************************/
         
-        /****** Populate candidate count per category******/
+    }
+    
+    private void setCandidateCount(){
+        
         candidate_count.put("President", 3);
         candidate_count.put("Vice-President", 3);
         candidate_count.put("Senators", 10);
         candidate_count.put("District Representative", 10);
         candidate_count.put("Governor", 3);
         candidate_count.put("Mayor", 3);
-        /**************************************************/
+        
     }
+ 
+    
 }
