@@ -22,83 +22,84 @@ public class AVS {
     /*
      * Superuser
      */
-    static Users p1 = new Users("super", "user", "superuser", "password", "Superuser");
+    static Users p1 = new Users("super", "user", "superuser", "password", "Superuser", "God");
     
     /*
      * Officer
      */
-    static Users p2 = new Users("officer", "1", "officer1", "password", "Officer");
-    static Users p3 = new Users("officer", "2", "officer2", "password", "Officer");
+    static Users p2 = new Users("officer", "1", "officer1", "password", "Officer", "superuser");
+    static Users p3 = new Users("officer", "2", "officer2", "password", "Officer", "superuser");
     
     /*
      * Voter
      */
-    static Users p4 = new Users("voter", "1", "voter1", "password", "Voter");
-    static Users p5 = new Users("voter", "2", "voter2", "password", "Voter");
-    static Users p6 = new Users("voter", "3", "voter3", "password", "Voter");
+    static Users p4 = new Users("voter", "1", "voter1", "password", "Voter", "superuser");
+    static Users p5 = new Users("voter", "2", "voter2", "password", "Voter", "superuser");
+    static Users p6 = new Users("voter", "3", "voter3", "password", "Voter", "superuser");
     
     /*
      * Presidents (3)
      */
-    static Candidates p7 = new Candidates("Lucius Annaeus", "Seneca", "President", "Stoicism");
-    static Candidates p8 = new Candidates("Adolf", "Hitler", "President", "Nazi");
-    static Candidates p9 = new Candidates("Joseph", "Stalin", "President", "Communist");
+    static Candidates p7 = new Candidates("Lucius Annaeus", "Seneca", "President", "Stoicism", "officer1");
+    static Candidates p8 = new Candidates("Adolf", "Hitler", "President", "Nazi", "officer2");
+    static Candidates p9 = new Candidates("Joseph", "Stalin", "President", "Communist", "officer1");
     
     /*
      * Vice-Presidents (3)
      */
-    static Candidates p10 = new Candidates("Marcus", "Aurelius", "Vice-President", "Stoicism");
-    static Candidates p11 = new Candidates("Franz", "von Papen", "Vice-President", "Nazi");
-    static Candidates p12 = new Candidates("Sergei", "Kirov", "Vice-President", "Communist");
+    static Candidates p10 = new Candidates("Marcus", "Aurelius", "Vice-President", "Stoicism", "officer2");
+    static Candidates p11 = new Candidates("Franz", "von Papen", "Vice-President", "Nazi", "officer1");
+    static Candidates p12 = new Candidates("Sergei", "Kirov", "Vice-President", "Communist", "officer2");
     
     /*
      * Senators (10)
      */
-    static Candidates p13 = new Candidates("Gaius Mosonius", "Rufus", "Senator", "Stoicism");
-    static Candidates p14 = new Candidates("Rubellius", "Plautus", "Senator", "Stoicism");
-    static Candidates p15 = new Candidates("Publius", "Paetus", "Senator", "Stoicism");
+    static Candidates p13 = new Candidates("Gaius Mosonius", "Rufus", "Senator", "Stoicism", "officer1");
+    static Candidates p14 = new Candidates("Rubellius", "Plautus", "Senator", "Stoicism", "officer2");
+    static Candidates p15 = new Candidates("Publius", "Paetus", "Senator", "Stoicism", "officer1");
     
-    static Candidates p16 = new Candidates("Julius", "Schreck", "Senator", "Nazi");
-    static Candidates p17 = new Candidates("Joseph", "Berchtold", "Senator", "Nazi");
-    static Candidates p18 = new Candidates("Erhard", "Heiden", "Senator", "Nazi");
+    static Candidates p16 = new Candidates("Julius", "Schreck", "Senator", "Nazi", "officer2");
+    static Candidates p17 = new Candidates("Joseph", "Berchtold", "Senator", "Nazi", "officer1");
+    static Candidates p18 = new Candidates("Erhard", "Heiden", "Senator", "Nazi", "officer2");
     
-    static Candidates p19 = new Candidates("Georgy", "Malenkov", "Senator", "Communist");
-    static Candidates p20 = new Candidates("Nikita", "Khrushchev", "Senator", "Communist");
-    static Candidates p21 = new Candidates("Leonid", "Brezhnev", "Senator", "Communist");
-    static Candidates p22 = new Candidates("Yuri", "Andropov", "Senator", "Communist");
+    static Candidates p19 = new Candidates("Georgy", "Malenkov", "Senator", "Communist", "officer1");
+    static Candidates p20 = new Candidates("Nikita", "Khrushchev", "Senator", "Communist", "officer2");
+    static Candidates p21 = new Candidates("Leonid", "Brezhnev", "Senator", "Communist", "officer1");
+    static Candidates p22 = new Candidates("Yuri", "Andropov", "Senator", "Communist", "officer2");
     
     /*
      * Governors (3)
      */
-    static Candidates p23 = new Candidates("Zeno", "of Citium", "Governor", "Stoicism");
-    static Candidates p24 = new Candidates("Heinrich", "Himmler", "Governor", "Nazi");
-    static Candidates p25 = new Candidates("Konstantin", "Chernenko", "Governor", "Communist");
+    static Candidates p23 = new Candidates("Zeno", "of Citium", "Governor", "Stoicism", "officer1");
+    static Candidates p24 = new Candidates("Heinrich", "Himmler", "Governor", "Nazi", "officer2");
+    static Candidates p25 = new Candidates("Konstantin", "Chernenko", "Governor", "Communist", "officer1");
     
     /*
      * Mayors (3)
      */
-    static Candidates p26 = new Candidates("Aratus", "of Soli", "Mayor", "Stoicism");
-    static Candidates p27 = new Candidates("Karl", "Hanke", "Mayor", "Nazi");
-    static Candidates p28 = new Candidates("Mikhail", "Mayor", "Governor", "Communist");
+    static Candidates p26 = new Candidates("Aratus", "of Soli", "Mayor", "Stoicism", "officer2");
+    static Candidates p27 = new Candidates("Karl", "Hanke", "Mayor", "Nazi", "officer1");
+    static Candidates p28 = new Candidates("Mikhail", "Kalinin", "Mayor", "Communist", "officer2");
     
     /*
      * District Representatives (10)
      */
-    static Candidates p29 = new Candidates("Aristo", "of Chios", "District Representatives", "Stoicism");
-    static Candidates p30 = new Candidates("Dionysius", "the Renegade", "District Representatives", "Stoicism");
-    static Candidates p31 = new Candidates("Herillus", "of Carthage", "District Representatives", "Stoicism");
+    static Candidates p29 = new Candidates("Aristo", "of Chios", "District Representative", "Stoicism", "officer1");
+    static Candidates p30 = new Candidates("Dionysius", "the Renegade", "District Representative", "Stoicism", "officer2");
+    static Candidates p31 = new Candidates("Herillus", "of Carthage", "District Representative", "Stoicism", "officer1");
     
-    static Candidates p32 = new Candidates("Kurt", "Daluege", "District Representatives", "Nazi");
-    static Candidates p33 = new Candidates("Sepp", "Dietrich", "District Representatives", "Nazi");
-    static Candidates p34 = new Candidates("Paul", "Hausser", "District Representatives", "Nazi");
+    static Candidates p32 = new Candidates("Kurt", "Daluege", "District Representative", "Nazi", "officer2");
+    static Candidates p33 = new Candidates("Sepp", "Dietrich", "District Representative", "Nazi", "officer1");
+    static Candidates p34 = new Candidates("Paul", "Hausser", "District Representative", "Nazi", "officer2");
     
-    static Candidates p35 = new Candidates("Lev", "Kamenev", "District Representatives", "Communist");
-    static Candidates p36 = new Candidates("Grogiry", "Zinoviev", "District Representatives", "Communist");
-    static Candidates p37 = new Candidates("Lavrentiy", "Beria", "District Representatives", "Communist");
-    static Candidates p38 = new Candidates("Alexei", "Kosygin", "District Representatives", "Communist");
+    static Candidates p35 = new Candidates("Lev", "Kamenev", "District Representative", "Communist", "officer1");
+    static Candidates p36 = new Candidates("Grogiry", "Zinoviev", "District Representative", "Communist", "officer2");
+    static Candidates p37 = new Candidates("Lavrentiy", "Beria", "District Representative", "Communist", "officer1");
+    static Candidates p38 = new Candidates("Alexei", "Kosygin", "District Representative", "Communist", "officer2");
 
     public static Map<String, Users> user = new HashMap<>();
     public static Map<Integer, Candidates> candidate = new HashMap<>();
+    public static Map<String, Integer> candidate_count = new HashMap<>();
     
     public static void main(String[] args) {
         user.put("superuser", p1);
@@ -140,5 +141,11 @@ public class AVS {
         candidate.put(p37.getId(), p37);
         candidate.put(p38.getId(), p38);
         
+        candidate_count.put("President", 3);
+        candidate_count.put("Vice-President", 3);
+        candidate_count.put("Senators", 10);
+        candidate_count.put("District Representative", 10);
+        candidate_count.put("Governor", 3);
+        candidate_count.put("Mayor", 3);
     }
 }
