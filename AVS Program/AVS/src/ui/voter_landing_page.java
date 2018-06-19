@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ui;
+import static avs.AVS.*;
 
 /**
  *
@@ -16,6 +17,7 @@ public class voter_landing_page extends javax.swing.JFrame {
      */
     public voter_landing_page() {
         initComponents();
+        populateFields();
     }
 
     /**
@@ -27,6 +29,8 @@ public class voter_landing_page extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        presidents = new javax.swing.ButtonGroup();
+        vicepresidents = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -65,46 +69,32 @@ public class voter_landing_page extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jCheckBox11 = new javax.swing.JCheckBox();
-        jCheckBox12 = new javax.swing.JCheckBox();
-        jCheckBox13 = new javax.swing.JCheckBox();
-        jCheckBox14 = new javax.swing.JCheckBox();
-        jCheckBox15 = new javax.swing.JCheckBox();
-        jLabel24 = new javax.swing.JLabel();
-        jCheckBox16 = new javax.swing.JCheckBox();
-        jCheckBox17 = new javax.swing.JCheckBox();
-        jCheckBox18 = new javax.swing.JCheckBox();
-        jCheckBox19 = new javax.swing.JCheckBox();
-        jCheckBox20 = new javax.swing.JCheckBox();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(569, 572));
 
         jPanel1.setBackground(new java.awt.Color(229, 93, 95));
         jPanel1.setLayout(null);
 
         jRadioButton1.setBackground(new java.awt.Color(229, 93, 95));
+        presidents.add(jRadioButton1);
         jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setText("jRadioButton1");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton1);
-        jRadioButton1.setBounds(50, 60, 93, 23);
+        jRadioButton1.setBounds(50, 60, 150, 23);
 
         jRadioButton2.setBackground(new java.awt.Color(229, 93, 95));
+        presidents.add(jRadioButton2);
         jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton2.setText("jRadioButton2");
         jPanel1.add(jRadioButton2);
-        jRadioButton2.setBounds(160, 60, 93, 23);
+        jRadioButton2.setBounds(220, 60, 170, 23);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,10 +103,11 @@ public class voter_landing_page extends javax.swing.JFrame {
         jLabel1.setBounds(20, 20, 160, 30);
 
         jRadioButton3.setBackground(new java.awt.Color(229, 93, 95));
+        presidents.add(jRadioButton3);
         jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton3.setText("jRadioButton3");
         jPanel1.add(jRadioButton3);
-        jRadioButton3.setBounds(270, 60, 93, 23);
+        jRadioButton3.setBounds(390, 60, 160, 23);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -125,66 +116,69 @@ public class voter_landing_page extends javax.swing.JFrame {
         jLabel2.setBounds(20, 120, 240, 30);
 
         jRadioButton4.setBackground(new java.awt.Color(229, 93, 95));
+        vicepresidents.add(jRadioButton4);
         jRadioButton4.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton4.setText("jRadioButton1");
         jPanel1.add(jRadioButton4);
-        jRadioButton4.setBounds(50, 160, 93, 23);
+        jRadioButton4.setBounds(50, 160, 170, 23);
 
         jRadioButton5.setBackground(new java.awt.Color(229, 93, 95));
+        vicepresidents.add(jRadioButton5);
         jRadioButton5.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton5.setText("jRadioButton2");
         jPanel1.add(jRadioButton5);
-        jRadioButton5.setBounds(160, 160, 93, 23);
+        jRadioButton5.setBounds(220, 160, 170, 23);
 
         jRadioButton6.setBackground(new java.awt.Color(229, 93, 95));
+        vicepresidents.add(jRadioButton6);
         jRadioButton6.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton6.setText("jRadioButton3");
         jPanel1.add(jRadioButton6);
-        jRadioButton6.setBounds(270, 160, 93, 23);
+        jRadioButton6.setBounds(390, 160, 160, 23);
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("party_name");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(290, 80, 80, 14);
+        jLabel3.setBounds(70, 80, 140, 14);
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("party_name");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(70, 80, 80, 14);
+        jLabel4.setBounds(240, 80, 80, 14);
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("party_name");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(180, 80, 80, 14);
+        jLabel5.setBounds(410, 80, 80, 14);
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("party_name");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(290, 180, 80, 14);
+        jLabel6.setBounds(70, 180, 80, 14);
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("party_name");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(180, 180, 80, 14);
+        jLabel7.setBounds(240, 180, 80, 14);
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("party_name");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(70, 180, 80, 14);
+        jLabel8.setBounds(410, 180, 80, 14);
 
         jSeparator1.setForeground(new java.awt.Color(229, 93, 95));
         jPanel1.add(jSeparator1);
-        jSeparator1.setBounds(20, 108, 530, 10);
+        jSeparator1.setBounds(20, 108, 560, 10);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Senators");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(20, 220, 240, 30);
+        jLabel9.setBounds(20, 230, 240, 30);
 
         jSeparator2.setForeground(new java.awt.Color(229, 93, 95));
         jPanel1.add(jSeparator2);
-        jSeparator2.setBounds(20, 210, 530, 10);
+        jSeparator2.setBounds(20, 210, 550, 10);
 
         jCheckBox1.setBackground(new java.awt.Color(229, 93, 95));
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,36 +189,36 @@ public class voter_landing_page extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jCheckBox1);
-        jCheckBox1.setBounds(50, 260, 81, 23);
+        jCheckBox1.setBounds(50, 280, 130, 23);
 
         jCheckBox2.setBackground(new java.awt.Color(229, 93, 95));
         jCheckBox2.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox2.setText("jCheckBox2");
         jPanel1.add(jCheckBox2);
-        jCheckBox2.setBounds(150, 260, 81, 23);
+        jCheckBox2.setBounds(180, 280, 130, 20);
 
         jCheckBox3.setBackground(new java.awt.Color(229, 93, 95));
         jCheckBox3.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox3.setText("jCheckBox3");
         jPanel1.add(jCheckBox3);
-        jCheckBox3.setBounds(250, 260, 81, 23);
+        jCheckBox3.setBounds(310, 280, 130, 20);
 
         jCheckBox4.setBackground(new java.awt.Color(229, 93, 95));
         jCheckBox4.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox4.setText("jCheckBox4");
         jPanel1.add(jCheckBox4);
-        jCheckBox4.setBounds(350, 260, 81, 23);
+        jCheckBox4.setBounds(440, 280, 130, 20);
 
         jCheckBox5.setBackground(new java.awt.Color(229, 93, 95));
         jCheckBox5.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox5.setText("jCheckBox5");
         jPanel1.add(jCheckBox5);
-        jCheckBox5.setBounds(450, 260, 81, 23);
+        jCheckBox5.setBounds(50, 330, 130, 23);
 
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("party_name");
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(470, 320, 60, 14);
+        jLabel13.setBounds(200, 400, 110, 14);
 
         jCheckBox6.setBackground(new java.awt.Color(229, 93, 95));
         jCheckBox6.setForeground(new java.awt.Color(255, 255, 255));
@@ -235,206 +229,76 @@ public class voter_landing_page extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jCheckBox6);
-        jCheckBox6.setBounds(50, 300, 81, 23);
+        jCheckBox6.setBounds(180, 330, 130, 20);
 
         jCheckBox7.setBackground(new java.awt.Color(229, 93, 95));
         jCheckBox7.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox7.setText("jCheckBox2");
         jPanel1.add(jCheckBox7);
-        jCheckBox7.setBounds(150, 300, 81, 23);
+        jCheckBox7.setBounds(310, 330, 130, 20);
 
         jCheckBox8.setBackground(new java.awt.Color(229, 93, 95));
         jCheckBox8.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox8.setText("jCheckBox3");
         jPanel1.add(jCheckBox8);
-        jCheckBox8.setBounds(250, 300, 81, 23);
+        jCheckBox8.setBounds(440, 330, 130, 20);
 
         jCheckBox9.setBackground(new java.awt.Color(229, 93, 95));
         jCheckBox9.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox9.setText("jCheckBox4");
         jPanel1.add(jCheckBox9);
-        jCheckBox9.setBounds(350, 300, 81, 23);
+        jCheckBox9.setBounds(50, 380, 130, 23);
 
         jCheckBox10.setBackground(new java.awt.Color(229, 93, 95));
         jCheckBox10.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox10.setText("jCheckBox5");
         jPanel1.add(jCheckBox10);
-        jCheckBox10.setBounds(450, 300, 81, 23);
+        jCheckBox10.setBounds(180, 380, 130, 20);
 
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("party_name");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(70, 280, 60, 14);
+        jLabel14.setBounds(70, 300, 110, 14);
 
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("party_name");
         jPanel1.add(jLabel15);
-        jLabel15.setBounds(170, 280, 60, 14);
+        jLabel15.setBounds(200, 300, 110, 14);
 
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("party_name");
         jPanel1.add(jLabel16);
-        jLabel16.setBounds(270, 280, 60, 14);
+        jLabel16.setBounds(330, 300, 110, 14);
 
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("party_name");
         jPanel1.add(jLabel17);
-        jLabel17.setBounds(370, 280, 60, 14);
+        jLabel17.setBounds(460, 300, 110, 14);
 
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("party_name");
         jPanel1.add(jLabel18);
-        jLabel18.setBounds(470, 280, 60, 14);
+        jLabel18.setBounds(70, 350, 110, 14);
 
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("party_name");
         jPanel1.add(jLabel19);
-        jLabel19.setBounds(70, 320, 60, 14);
+        jLabel19.setBounds(200, 350, 110, 14);
 
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("party_name");
         jPanel1.add(jLabel20);
-        jLabel20.setBounds(170, 320, 60, 14);
+        jLabel20.setBounds(330, 350, 110, 14);
 
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("party_name");
         jPanel1.add(jLabel21);
-        jLabel21.setBounds(270, 320, 60, 14);
+        jLabel21.setBounds(460, 350, 110, 14);
 
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("party_name");
         jPanel1.add(jLabel22);
-        jLabel22.setBounds(370, 320, 60, 14);
-
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("District Representatives");
-        jPanel1.add(jLabel23);
-        jLabel23.setBounds(20, 370, 400, 30);
-
-        jSeparator3.setForeground(new java.awt.Color(229, 93, 95));
-        jPanel1.add(jSeparator3);
-        jSeparator3.setBounds(20, 360, 530, 10);
-
-        jCheckBox11.setBackground(new java.awt.Color(229, 93, 95));
-        jCheckBox11.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox11.setText("jCheckBox1");
-        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox11ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jCheckBox11);
-        jCheckBox11.setBounds(50, 410, 81, 23);
-
-        jCheckBox12.setBackground(new java.awt.Color(229, 93, 95));
-        jCheckBox12.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox12.setText("jCheckBox2");
-        jPanel1.add(jCheckBox12);
-        jCheckBox12.setBounds(150, 410, 81, 23);
-
-        jCheckBox13.setBackground(new java.awt.Color(229, 93, 95));
-        jCheckBox13.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox13.setText("jCheckBox3");
-        jPanel1.add(jCheckBox13);
-        jCheckBox13.setBounds(250, 410, 81, 23);
-
-        jCheckBox14.setBackground(new java.awt.Color(229, 93, 95));
-        jCheckBox14.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox14.setText("jCheckBox4");
-        jPanel1.add(jCheckBox14);
-        jCheckBox14.setBounds(350, 410, 81, 23);
-
-        jCheckBox15.setBackground(new java.awt.Color(229, 93, 95));
-        jCheckBox15.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox15.setText("jCheckBox5");
-        jPanel1.add(jCheckBox15);
-        jCheckBox15.setBounds(450, 410, 81, 23);
-
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("party_name");
-        jPanel1.add(jLabel24);
-        jLabel24.setBounds(470, 470, 60, 14);
-
-        jCheckBox16.setBackground(new java.awt.Color(229, 93, 95));
-        jCheckBox16.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox16.setText("jCheckBox1");
-        jCheckBox16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox16ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jCheckBox16);
-        jCheckBox16.setBounds(50, 450, 81, 23);
-
-        jCheckBox17.setBackground(new java.awt.Color(229, 93, 95));
-        jCheckBox17.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox17.setText("jCheckBox2");
-        jPanel1.add(jCheckBox17);
-        jCheckBox17.setBounds(150, 450, 81, 23);
-
-        jCheckBox18.setBackground(new java.awt.Color(229, 93, 95));
-        jCheckBox18.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox18.setText("jCheckBox3");
-        jPanel1.add(jCheckBox18);
-        jCheckBox18.setBounds(250, 450, 81, 23);
-
-        jCheckBox19.setBackground(new java.awt.Color(229, 93, 95));
-        jCheckBox19.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox19.setText("jCheckBox4");
-        jPanel1.add(jCheckBox19);
-        jCheckBox19.setBounds(350, 450, 81, 23);
-
-        jCheckBox20.setBackground(new java.awt.Color(229, 93, 95));
-        jCheckBox20.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox20.setText("jCheckBox5");
-        jPanel1.add(jCheckBox20);
-        jCheckBox20.setBounds(450, 450, 81, 23);
-
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("party_name");
-        jPanel1.add(jLabel25);
-        jLabel25.setBounds(70, 430, 60, 14);
-
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("party_name");
-        jPanel1.add(jLabel26);
-        jLabel26.setBounds(170, 430, 60, 14);
-
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("party_name");
-        jPanel1.add(jLabel27);
-        jLabel27.setBounds(270, 430, 60, 14);
-
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("party_name");
-        jPanel1.add(jLabel28);
-        jLabel28.setBounds(370, 430, 60, 14);
-
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("party_name");
-        jPanel1.add(jLabel29);
-        jLabel29.setBounds(470, 430, 60, 14);
-
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("party_name");
-        jPanel1.add(jLabel30);
-        jLabel30.setBounds(70, 470, 60, 14);
-
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("party_name");
-        jPanel1.add(jLabel31);
-        jLabel31.setBounds(170, 470, 60, 14);
-
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("party_name");
-        jPanel1.add(jLabel32);
-        jLabel32.setBounds(270, 470, 60, 14);
-
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setText("party_name");
-        jPanel1.add(jLabel33);
-        jLabel33.setBounds(370, 470, 60, 14);
+        jLabel22.setBounds(70, 400, 110, 14);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -442,17 +306,19 @@ public class voter_landing_page extends javax.swing.JFrame {
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jButton1.setContentAreaFilled(false);
         jPanel1.add(jButton1);
-        jButton1.setBounds(463, 510, 70, 40);
+        jButton1.setBounds(480, 410, 70, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
         );
 
         pack();
@@ -466,14 +332,49 @@ public class voter_landing_page extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox11ActionPerformed
-
-    private void jCheckBox16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox16ActionPerformed
-
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    
+    void populateFields(){
+        // presidents
+            jRadioButton1.setText(p7.getLast_name()+", "+p7.getFirst_name());
+            jLabel3.setText(p7.getParty());
+            jRadioButton2.setText(p8.getLast_name()+", "+p8.getFirst_name());
+            jLabel4.setText(p8.getParty());
+            jRadioButton3.setText(p9.getLast_name()+", "+p9.getFirst_name());
+            jLabel5.setText(p9.getParty());
+            
+        // vice presidents
+            jRadioButton4.setText(p10.getLast_name()+", "+p10.getFirst_name());
+            jLabel6.setText(p10.getParty());
+            jRadioButton5.setText(p11.getLast_name()+", "+p11.getFirst_name());
+            jLabel7.setText(p11.getParty());
+            jRadioButton6.setText(p12.getLast_name()+", "+p12.getFirst_name());
+            jLabel8.setText(p12.getParty());
+            
+        // senators
+            jCheckBox1.setText(p13.getLast_name()+", "+p13.getFirst_name());
+            jLabel14.setText(p13.getParty());
+            jCheckBox2.setText(p14.getLast_name()+", "+p14.getFirst_name());
+            jLabel15.setText(p14.getParty());
+            jCheckBox3.setText(p15.getLast_name()+", "+p15.getFirst_name());
+            jLabel16.setText(p15.getParty());
+            jCheckBox4.setText(p16.getLast_name()+", "+p16.getFirst_name());
+            jLabel17.setText(p16.getParty());
+            jCheckBox5.setText(p17.getLast_name()+", "+p17.getFirst_name());
+            jLabel18.setText(p17.getParty());
+            jCheckBox6.setText(p18.getLast_name()+", "+p18.getFirst_name());
+            jLabel19.setText(p18.getParty());
+            jCheckBox7.setText(p19.getLast_name()+", "+p19.getFirst_name());
+            jLabel20.setText(p19.getParty());
+            jCheckBox8.setText(p20.getLast_name()+", "+p20.getFirst_name());
+            jLabel21.setText(p20.getParty());
+            jCheckBox9.setText(p21.getLast_name()+", "+p21.getFirst_name());
+            jLabel22.setText(p21.getParty());
+            jCheckBox10.setText(p22.getLast_name()+", "+p22.getFirst_name());
+            jLabel13.setText(p22.getParty());         
+    }
     /**
      * @param args the command line arguments
      */
@@ -513,17 +414,7 @@ public class voter_landing_page extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
-    private javax.swing.JCheckBox jCheckBox11;
-    private javax.swing.JCheckBox jCheckBox12;
-    private javax.swing.JCheckBox jCheckBox13;
-    private javax.swing.JCheckBox jCheckBox14;
-    private javax.swing.JCheckBox jCheckBox15;
-    private javax.swing.JCheckBox jCheckBox16;
-    private javax.swing.JCheckBox jCheckBox17;
-    private javax.swing.JCheckBox jCheckBox18;
-    private javax.swing.JCheckBox jCheckBox19;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox20;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
@@ -543,18 +434,7 @@ public class voter_landing_page extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -570,6 +450,7 @@ public class voter_landing_page extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.ButtonGroup presidents;
+    private javax.swing.ButtonGroup vicepresidents;
     // End of variables declaration//GEN-END:variables
 }
