@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package ui;
+import avs.HelperClass;
+import avs.Candidates;
 
 /**
  *
@@ -184,6 +186,14 @@ public class add_candidate extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         check();
+        if(HelperClass.canAddCandidateOnPosition((String)positionComboBox.getSelectedItem()) &&  
+                HelperClass.checkMaxNumberOfCandidates()){
+            Candidates newCandidate = new Candidates(firstnameField.getText(),
+                                                     lastnameField.getText(),
+                                                     (String) positionComboBox.getSelectedItem(),
+                                                     (String) partyComboBox.getSelectedItem(),
+                                                     "adder");
+        }
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed

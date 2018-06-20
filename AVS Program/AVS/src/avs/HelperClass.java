@@ -69,12 +69,12 @@ public class HelperClass {
     /*** helper methods ****/
     
     //check number of candidates in a specific position
-    public boolean canAddCandidateOnPosition(String position){
+    public static boolean canAddCandidateOnPosition(String position){
         return (candidate_count.get(position) < max_candidate_count.get(position));
     }
     
     //check if maxinum number of candidates per position is satisfied
-    public boolean checkMaxNumberOfCandidates(){
+    public static boolean checkMaxNumberOfCandidates(){
         int max[] = {3,3,10,10,3,3};
         int x = 0;
         
@@ -119,7 +119,7 @@ public class HelperClass {
     }
     
     //user validation for login?
-    public boolean login(String username, String password){
+    public static boolean login(String username, String password){
         Users user = users.get(username);
         if(user == null){
             return false;

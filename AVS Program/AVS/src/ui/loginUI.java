@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package ui;
-
+import avs.HelperClass;
 /**
  *
  * @author student
@@ -65,6 +65,11 @@ public class loginUI extends javax.swing.JFrame {
 
         loginButton.setBackground(new java.awt.Color(229, 93, 95));
         loginButton.setForeground(new java.awt.Color(229, 93, 95));
+        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginButtonMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -194,6 +199,15 @@ public class loginUI extends javax.swing.JFrame {
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldActionPerformed
+
+    private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
+        switch(HelperClass.login(usernameField.getText(), passwordField.getText())){
+            case "Superuser": break;
+            case "Officer": new officer_landing(usernameField.getText()).setVisible(true); this.dispose(); break;
+            default: break;
+        }
+                    
+    }//GEN-LAST:event_loginButtonMouseClicked
 
     /**
      * @param args the command line arguments

@@ -10,12 +10,17 @@ package ui;
  * @author Sarausad
  */
 public class officer_landing extends javax.swing.JFrame {
-
+    public static String currentOfficer;
     /**
      * Creates new form officer_landing
      */
     public officer_landing() {
         initComponents();
+    }
+    
+    public officer_landing(String username) {
+        currentOfficer = username;
+        initComponents();        
     }
 
     /**
@@ -39,7 +44,7 @@ public class officer_landing extends javax.swing.JFrame {
 
         helloText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         helloText.setForeground(new java.awt.Color(255, 255, 255));
-        helloText.setText("Hello, <office_name>");
+        helloText.setText("Hello"+currentOfficer);
 
         addCandidateButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addCandidateButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -81,17 +86,17 @@ public class officer_landing extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(helloText, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(removeCandidateButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(addCandidateButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(helloText, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
