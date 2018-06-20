@@ -21,11 +21,12 @@ public class Users {
     private String edited_by;
     private Date date_added;
     private Date date_edited;
-        
+    private boolean voteStatus; // check if a voter has voted or not
     /*
      * Constructor
      */
-    public Users(String first_name, String last_name, String username, String password, String type, String added_by){
+    public Users(String first_name, String last_name, String username,
+            String password, String type, String added_by){
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
@@ -33,6 +34,7 @@ public class Users {
         this.type = type;
         this.added_by = added_by;
         this.date_added = new Date();
+        voteStatus = false;
     }
             
         
@@ -60,7 +62,7 @@ public class Users {
     public void setDate_edited(){
         this.date_edited = new Date();
     }
-        
+      
     /*
      * Getters
      */
@@ -90,5 +92,8 @@ public class Users {
     }
     public Date getDate_edited(){
         return this.date_edited;
+    }
+    public boolean getVoteStatus(){
+        return voteStatus;
     }
 }
