@@ -119,13 +119,14 @@ public class HelperClass {
     }
     
     //user validation for login?
-    public boolean login(String username, String password){
+    public static String login(String username, String password){
         Users user = users.get(username);
+        String ret = "false";
         if(user == null){
-            return false;
+            return ret;
         }else if(!user.getPassword().equals(password)){
-            return false;
+            return ret;
         }
-        return true;
+        return user.getType();
     }
 }
