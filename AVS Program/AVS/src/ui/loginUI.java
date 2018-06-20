@@ -34,11 +34,11 @@ public class loginUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        passwordField = new javax.swing.JTextField();
         loginButton = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         cancelButton = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,12 +56,6 @@ public class loginUI extends javax.swing.JFrame {
         jLabel3.setText("Username:");
 
         jLabel4.setText("Password: ");
-
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
-            }
-        });
 
         loginButton.setBackground(new java.awt.Color(229, 93, 95));
         loginButton.setForeground(new java.awt.Color(229, 93, 95));
@@ -95,6 +89,11 @@ public class loginUI extends javax.swing.JFrame {
         cancelButton.setBackground(new java.awt.Color(229, 93, 95));
         cancelButton.setForeground(new java.awt.Color(229, 93, 95));
         cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelButtonMouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,9 +136,9 @@ public class loginUI extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addGap(10, 10, 10)
                                 .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(10, 10, 10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(17, 17, 17))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -163,10 +162,8 @@ public class loginUI extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel4))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,19 +191,19 @@ public class loginUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldActionPerformed
+    private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonMouseClicked
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
-        switch(HelperClass.login(usernameField.getText(), passwordField.getText())){
-            case "Superuser": break;
-            case "Officer": new officer_landing(usernameField.getText()).setVisible(true); this.dispose(); break;
-            default: break;
-        }
-                    
+        String type = HelperClass.login(usernameField.getText(), passwordField.getText());
+        
+        System.out.println(type);
+        new officer_landing(usernameField.getText());
+        this.dispose();
     }//GEN-LAST:event_loginButtonMouseClicked
 
     /**
@@ -255,7 +252,7 @@ public class loginUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel loginButton;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 }

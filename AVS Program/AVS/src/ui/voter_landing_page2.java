@@ -68,7 +68,6 @@ public class voter_landing_page2 extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        backButton = new javax.swing.JButton();
         voteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -300,19 +299,6 @@ public class voter_landing_page2 extends javax.swing.JFrame {
         jPanel1.add(jLabel33);
         jLabel33.setBounds(200, 400, 110, 14);
 
-        backButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        backButton.setForeground(new java.awt.Color(255, 255, 255));
-        backButton.setText("Back");
-        backButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
-        backButton.setContentAreaFilled(false);
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(backButton);
-        backButton.setBounds(390, 410, 70, 40);
-
         voteButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         voteButton.setForeground(new java.awt.Color(255, 255, 255));
         voteButton.setText("Vote");
@@ -352,11 +338,6 @@ public class voter_landing_page2 extends javax.swing.JFrame {
     private void jCheckBox16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox16ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox16ActionPerformed
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        new voter_landing_page().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_backButtonActionPerformed
 
     private void voteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voteButtonActionPerformed
         // TODO add your handling code here:
@@ -437,7 +418,6 @@ public class voter_landing_page2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
     private javax.swing.ButtonGroup governor;
     private javax.swing.JCheckBox jCheckBox11;
     private javax.swing.JCheckBox jCheckBox12;

@@ -5,6 +5,12 @@
  */
 package ui;
 
+import avs.AVS;
+import avs.Candidates;
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Map;
+import static ui.officer_landing.currentOfficer;
 /**
  *
  * @author Sarausad
@@ -15,6 +21,7 @@ public class remove_candidate extends javax.swing.JFrame {
      */
     public remove_candidate() {
         initComponents();
+        initComboBox();
     }
 
     /**
@@ -219,16 +226,27 @@ public class remove_candidate extends javax.swing.JFrame {
     }//GEN-LAST:event_firstnameFieldActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
-        new areyousure("removeCandidate", "Remove Current Candidate").setVisible(true);
+        new areyousure("removeCandidate", "Remove Candidate no. "+idComboBox.getSelectedItem()).setVisible(true);
         
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        check();        
+        check();
+        Candidates newCandidate = new Candidates(firstnameField.getText(),
+                                                 lastnameField.getText(),
+                                                 (String) positionComboBox.getSelectedItem(),
+                                                 (String) partyComboBox.getSelectedItem(),
+                                                 currentOfficer);
+        AVS.getCandidates().put(((int) idComboBox.getSelectedItem()), newCandidate);        
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void idComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idComboBoxActionPerformed
         // TODO add your handling code here:
+        Candidates temp = (Candidates) AVS.getCandidates().get(idComboBox.getSelectedItem());
+        firstnameField.setText(temp.getFirst_name());
+        lastnameField.setText(temp.getLast_name());
+        partyComboBox.setSelectedItem(temp.getParty());
+        positionComboBox.setSelectedItem(temp.getPosition());
     }//GEN-LAST:event_idComboBoxActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -240,10 +258,20 @@ public class remove_candidate extends javax.swing.JFrame {
         if(firstnameField.getText().equals("") || lastnameField.getText().equals("")){
             new fieldError("updateCandidate").setVisible(true);
         }else{            
-            new areyousure("updateCandidate", "Update Current Candidate").setVisible(true);
+            new areyousure("updateCandidate", "Update Candidate no. "+ (String) idComboBox.getSelectedItem(), (String) idComboBox.getSelectedItem()).setVisible(true);
         }
         
         this.dispose();
+    }
+    
+    void initComboBox(){
+        Map<Integer, Candidates> temp = AVS.getCandidates(); //AVS.getCandidates() returns {} for some reason
+        ArrayList<String> allKeys = new ArrayList<String>();
+        for(Integer key : temp.keySet()){
+            allKeys.add(String.valueOf(key));
+        }
+        
+        idComboBox.setModel(new javax.swing.DefaultComboBoxModel(allKeys.toArray()));
     }
     
     /**

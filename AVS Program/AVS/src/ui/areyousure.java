@@ -5,12 +5,15 @@
  */
 package ui;
 
+import avs.AVS;
+
 /**
  *
  * @author Sarausad
  */
 public class areyousure extends javax.swing.JFrame {
     public String from;
+    public String id;
     /**
      * Creates new form areyousure
      */
@@ -20,6 +23,13 @@ public class areyousure extends javax.swing.JFrame {
     
     public areyousure(String from, String message) {
         this.from = from;
+        initComponents();
+        messageText.setText(message);
+    }
+    
+    public areyousure(String from, String message, String id) {
+        this.from = from;
+        this.id = id;
         initComponents();
         messageText.setText(message);
     }
@@ -130,6 +140,7 @@ public class areyousure extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         switch(from){
             case "updateCandidate": new remove_candidate().setVisible(true); break;
+            case "removeCandidate": remove(); break;
             default: new loginUI().setVisible(true); break;
         }
 
@@ -139,7 +150,10 @@ public class areyousure extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    void remove (){
+        AVS.getCandidates().remove(id);
+    }
     /**
      * @param args the command line arguments
      */

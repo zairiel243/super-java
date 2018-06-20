@@ -6,6 +6,7 @@
 package ui;
 import avs.HelperClass;
 import avs.Candidates;
+import static ui.officer_landing.currentOfficer;
 
 /**
  *
@@ -186,14 +187,18 @@ public class add_candidate extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         check();
-        if(HelperClass.canAddCandidateOnPosition((String)positionComboBox.getSelectedItem()) &&  
-                HelperClass.checkMaxNumberOfCandidates()){
+        
+        if (!HelperClass.canAddCandidateOnPosition((String)positionComboBox.getSelectedItem())){
+            new fieldError("addCandidate", "Cannot add anymore on the position!").setVisible(true);
+        } else if (!HelperClass.checkMaxNumberOfCandidates()) {
+            new fieldError("addCandidate", "Candidates are full!").setVisible(true);
+        } else {
             Candidates newCandidate = new Candidates(firstnameField.getText(),
                                                      lastnameField.getText(),
                                                      (String) positionComboBox.getSelectedItem(),
                                                      (String) partyComboBox.getSelectedItem(),
-                                                     "adder");
-        }
+                                                     currentOfficer);
+        }               
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed

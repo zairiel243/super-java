@@ -122,7 +122,6 @@ public class AVS {
         avs.setCandidateCount();
         //Populate max candidate count
         avs.setMaxCandidateCount();
-       
     }
     
     
@@ -132,7 +131,7 @@ public class AVS {
         return users;
     }
     
-    public Map<Integer, Candidates> getCandidates(){
+    public static Map<Integer, Candidates> getCandidates(){
         return candidates;
     }
     
@@ -143,6 +142,7 @@ public class AVS {
     public Map<String, Integer> getMaxCandidateCount(){
         return max_candidate_count;
     }
+    
     
 
     

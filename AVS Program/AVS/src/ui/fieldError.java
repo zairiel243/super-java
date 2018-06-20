@@ -22,6 +22,12 @@ public class fieldError extends javax.swing.JFrame {
         this.from = from;
         initComponents();
     }
+    
+    public fieldError(String from, String message){
+        this.from = from;
+        jLabel1.setText(message);
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,7 +120,7 @@ public class fieldError extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         switch(from){
             case "addCandidate": new add_candidate().setVisible(true); break;
-            case "updateCandidate": new remove_candidate().setVisible(true); break;
+            case "updateCandidate": new remove_candidate().setVisible(true); break;            
             default: break;
         }
         

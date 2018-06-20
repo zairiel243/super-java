@@ -44,7 +44,7 @@ public class officer_landing extends javax.swing.JFrame {
 
         helloText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         helloText.setForeground(new java.awt.Color(255, 255, 255));
-        helloText.setText("Hello"+currentOfficer);
+        helloText.setText("Hello, "+currentOfficer);
 
         addCandidateButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addCandidateButton.setForeground(new java.awt.Color(255, 255, 255));
