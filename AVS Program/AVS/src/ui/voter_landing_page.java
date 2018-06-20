@@ -69,12 +69,13 @@ public class voter_landing_page extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(569, 572));
 
         jPanel1.setBackground(new java.awt.Color(229, 93, 95));
+        jPanel1.setMinimumSize(new java.awt.Dimension(593, 494));
         jPanel1.setLayout(null);
 
         jRadioButton1.setBackground(new java.awt.Color(229, 93, 95));
@@ -300,13 +301,18 @@ public class voter_landing_page extends javax.swing.JFrame {
         jPanel1.add(jLabel22);
         jLabel22.setBounds(70, 400, 110, 14);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Next");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
-        jButton1.setContentAreaFilled(false);
-        jPanel1.add(jButton1);
-        jButton1.setBounds(480, 410, 70, 40);
+        nextButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nextButton.setForeground(new java.awt.Color(255, 255, 255));
+        nextButton.setText("Next");
+        nextButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        nextButton.setContentAreaFilled(false);
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nextButton);
+        nextButton.setBounds(480, 410, 70, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -322,6 +328,7 @@ public class voter_landing_page extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
@@ -335,6 +342,11 @@ public class voter_landing_page extends javax.swing.JFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        new voter_landing_page2().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_nextButtonActionPerformed
     
     void populateFields(){
         // presidents
@@ -411,7 +423,6 @@ public class voter_landing_page extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox2;
@@ -450,6 +461,7 @@ public class voter_landing_page extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton nextButton;
     private javax.swing.ButtonGroup presidents;
     private javax.swing.ButtonGroup vicepresidents;
     // End of variables declaration//GEN-END:variables
