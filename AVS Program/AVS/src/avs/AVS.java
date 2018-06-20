@@ -106,6 +106,7 @@ public class AVS {
     private static Map<String, Users> users = new HashMap<>();
     private static Map<Integer, Candidates> candidates = new HashMap<>();
     private static Map<String, Integer> candidate_count = new HashMap<>();
+    private static Map<String, Integer> max_candidate_count = new HashMap<>();
     /***********************************************************************/
     
     public static void main(String[] args) {
@@ -119,6 +120,8 @@ public class AVS {
         avs.setCandidates();
         //Populate candidate count per category
         avs.setCandidateCount();
+        //Populate max candidate count
+        avs.setMaxCandidateCount();
        
     }
     
@@ -135,6 +138,10 @@ public class AVS {
     
     public Map<String, Integer> getCandidateCount(){
         return candidate_count;
+    }
+    
+    public Map<String, Integer> getMaxCandidateCount(){
+        return max_candidate_count;
     }
     
 
@@ -195,6 +202,17 @@ public class AVS {
         candidate_count.put("District Representative", 10);
         candidate_count.put("Governor", 3);
         candidate_count.put("Mayor", 3);
+        
+    }
+    
+    private void setMaxCandidateCount(){
+        
+        max_candidate_count.put("President", 3);
+        max_candidate_count.put("Vice-President", 3);
+        max_candidate_count.put("Senators", 10);
+        max_candidate_count.put("District Representative", 10);
+        max_candidate_count.put("Governor", 3);
+        max_candidate_count.put("Mayor", 3);
         
     }
  
