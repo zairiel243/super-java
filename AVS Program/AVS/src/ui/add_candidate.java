@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ui;
+import avs.AVS;
 import avs.HelperClass;
 import avs.Candidates;
 import static ui.officer_landing.currentOfficer;
@@ -198,6 +199,7 @@ public class add_candidate extends javax.swing.JFrame {
                                                      (String) positionComboBox.getSelectedItem(),
                                                      (String) partyComboBox.getSelectedItem(),
                                                      currentOfficer);
+            AVS.getCandidates().put(newCandidate.getId(), newCandidate);
         }               
     }//GEN-LAST:event_addButtonActionPerformed
 

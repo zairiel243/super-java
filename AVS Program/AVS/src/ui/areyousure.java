@@ -14,11 +14,13 @@ import avs.AVS;
 public class areyousure extends javax.swing.JFrame {
     public String from;
     public String id;
+    private AVS avs;
     /**
      * Creates new form areyousure
      */
     public areyousure() {
         initComponents();
+        avs = new AVS();
     }
     
     public areyousure(String from, String message) {
@@ -152,7 +154,7 @@ public class areyousure extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
     
     void remove (){
-        AVS.getCandidates().remove(id);
+        avs.getCandidates().remove(id);
     }
     /**
      * @param args the command line arguments

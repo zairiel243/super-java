@@ -19,9 +19,11 @@ public class remove_candidate extends javax.swing.JFrame {
     /**
      * Creates new form remove_candidate
      */
+    private AVS avs;
     public remove_candidate() {
         initComponents();
         initComboBox();
+        avs = new AVS();
     }
 
     /**
@@ -237,16 +239,18 @@ public class remove_candidate extends javax.swing.JFrame {
                                                  (String) positionComboBox.getSelectedItem(),
                                                  (String) partyComboBox.getSelectedItem(),
                                                  currentOfficer);
-        AVS.getCandidates().put(((int) idComboBox.getSelectedItem()), newCandidate);        
+        avs.getCandidates().put(((int) idComboBox.getSelectedItem()), newCandidate);        
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void idComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idComboBoxActionPerformed
         // TODO add your handling code here:
-        Candidates temp = (Candidates) AVS.getCandidates().get(idComboBox.getSelectedItem());
-        firstnameField.setText(temp.getFirst_name());
-        lastnameField.setText(temp.getLast_name());
-        partyComboBox.setSelectedItem(temp.getParty());
-        positionComboBox.setSelectedItem(temp.getPosition());
+        System.out.println(idComboBox.getSelectedItem());
+        Candidates temp = (Candidates) AVS.getCandidates().get((int)idComboBox.getSelectedItem());
+        System.out.println(temp);
+//        firstnameField.setText(temp.getFirst_name());
+//        lastnameField.setText(temp.getLast_name());
+//        partyComboBox.setSelectedItem(temp.getParty());
+//        positionComboBox.setSelectedItem(temp.getPosition());
     }//GEN-LAST:event_idComboBoxActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -265,6 +269,7 @@ public class remove_candidate extends javax.swing.JFrame {
     }
     
     void initComboBox(){
+        
         Map<Integer, Candidates> temp = AVS.getCandidates(); //AVS.getCandidates() returns {} for some reason
         ArrayList<String> allKeys = new ArrayList<String>();
         for(Integer key : temp.keySet()){

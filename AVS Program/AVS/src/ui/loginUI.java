@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ui;
+import avs.AVS;
 import avs.HelperClass;
 /**
  *
@@ -199,10 +200,10 @@ public class loginUI extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButtonMouseClicked
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
-        String type = HelperClass.login(usernameField.getText(), passwordField.getText());
+        String type = AVS.login(usernameField.getText(), passwordField.getText());
         
         System.out.println(type);
-        new officer_landing(usernameField.getText());
+        new officer_landing(usernameField.getText()).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loginButtonMouseClicked
 

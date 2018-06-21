@@ -7,6 +7,7 @@ package avs;
 
 import java.util.HashMap;
 import java.util.Map;
+import ui.loginUI;
 
 
 /** History
@@ -109,6 +110,36 @@ public class AVS {
     private static Map<String, Integer> max_candidate_count = new HashMap<>();
     /***********************************************************************/
     
+    public static boolean canAddCandidateOnPosition(String position){
+        return (candidate_count.get(position) < max_candidate_count.get(position));
+    }
+    
+    //check if maxinum number of candidates per position is satisfied
+    public static boolean checkMaxNumberOfCandidates(){
+        int max[] = {3,3,10,10,3,3};
+        int x = 0;
+        
+        for( Map.Entry<String, Integer> entry : candidate_count.entrySet()){
+            if(entry.getValue() != max[x] ){
+                return false;
+            }
+            x++;
+        }
+        
+        return true;
+    }
+    
+    public static String login(String username, String password){
+        String ret = "false";
+        Users user = users.get(username);
+        if(user == null){
+            return ret;
+        }else if(!user.getPassword().equals(password)){
+            return ret;
+        }
+        return user.getType();
+    }
+    
     public static void main(String[] args) {
         
        
@@ -118,16 +149,24 @@ public class AVS {
         avs.setUsers();
         //Populate candidates
         avs.setCandidates();
+//        avs.print();
         //Populate candidate count per category
         avs.setCandidateCount();
         //Populate max candidate count
         avs.setMaxCandidateCount();
+        new loginUI().setVisible(true);
     }
     
-    
+    public void print(){
+        for( Map.Entry<String, Users> entry : users.entrySet()){
+           
+                System.out.print(  entry.getValue().getFirst_name() + "  " + entry.getKey() );
+        }
+    }
     /*** getters ***/
     
     public Map<String, Users> getUsers(){
+        print();
         return users;
     }
     

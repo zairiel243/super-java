@@ -30,6 +30,7 @@ public class HelperClass {
     public HelperClass(){
         avsController = new AVS();
         users = avsController.getUsers();
+        avsController.print();
         candidates = avsController.getCandidates();
         candidate_count = avsController.getCandidateCount();
         max_candidate_count = avsController.getMaxCandidateCount();
@@ -120,8 +121,12 @@ public class HelperClass {
     
     //user validation for login?
     public static String login(String username, String password){
+        System.out.println(username + " " + password);
+        System.out.println(users);
         Users user = users.get(username);
+        
         String ret = "false";
+        System.out.println(user.getPassword());
         if(user == null){
             return ret;
         }else if(!user.getPassword().equals(password)){
