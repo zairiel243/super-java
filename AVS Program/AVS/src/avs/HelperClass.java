@@ -22,6 +22,7 @@ public class HelperClass {
     private static Map<String, Users> users;
     private static Map<Integer, Candidates> candidates;
     private static Map<String, Integer> candidate_count;
+    private static Map<String, Integer> max_candidate_count;
     private static boolean editStatus; // check if candidates can still be edited
     private int noOfActualVoters;
     /**********************************/
@@ -29,14 +30,16 @@ public class HelperClass {
     public HelperClass(){
         avsController = new AVS();
         users = avsController.getUsers();
+        avsController.print();
         candidates = avsController.getCandidates();
         candidate_count = avsController.getCandidateCount();
+        max_candidate_count = avsController.getMaxCandidateCount();
         editStatus = true;
     }
     
     /**** getters ****/
     
-     public Map<String, Users> getUsers(){
+    public Map<String, Users> getUsers(){
         return users;
     }
     
@@ -48,38 +51,52 @@ public class HelperClass {
         return candidate_count;
     }
     
+    public Map<String, Integer> getMaxCandidateCount(){
+        return max_candidate_count;
+    }
+    
+    public boolean getEditStatus(){
+        return editStatus;
+    }
     
     /**** setters ****/
     
+    public void setEditStatus(){
+        editStatus = false;
+    }
     
     
     
     /*** helper methods ****/
     
+    //check number of candidates in a specific position
+    public static boolean canAddCandidateOnPosition(String position){
+        return (candidate_count.get(position) < max_candidate_count.get(position));
+    }
+    
     //check if maxinum number of candidates per position is satisfied
-    public boolean checkMaxNumberOfCandidates(){
-        boolean retval = true;
+    public static boolean checkMaxNumberOfCandidates(){
         int max[] = {3,3,10,10,3,3};
         int x = 0;
         
         for( Map.Entry<String, Integer> entry : candidate_count.entrySet()){
             if(entry.getValue() != max[x] ){
-                retval = false;
+                return false;
             }
             x++;
         }
         
-        return retval;
+        return true;
     }
     
-    //checks if at least one voter has voted, will set editStatus to false
-    public void checkEditStatus(){
-       if( users.get("voter1").getVoteStatus() == true ||
-            users.get("voter2").getVoteStatus() == true ||
-            users.get("voter3").getVoteStatus() == true ){
-            editStatus = false;
-       }
-    }
+//    //checks if at least one voter has voted, will set editStatus to false
+//    public void checkEditStatus(){
+//       if( users.get("voter1").getVoteStatus() == true ||
+//            users.get("voter2").getVoteStatus() == true ||
+//            users.get("voter3").getVoteStatus() == true ){
+//            editStatus = false;
+//       }
+//    }
     //returns number of voters who already voted
     public int getNoOfActualVoters(){
        if( users.get("voter1").getVoteStatus() == true){
@@ -103,5 +120,18 @@ public class HelperClass {
     }
     
     //user validation for login?
-    
+    public static String login(String username, String password){
+        System.out.println(username + " " + password);
+        System.out.println(users);
+        Users user = users.get(username);
+        
+        String ret = "false";
+        System.out.println(user.getPassword());
+        if(user == null){
+            return ret;
+        }else if(!user.getPassword().equals(password)){
+            return ret;
+        }
+        return user.getType();
+    }
 }
