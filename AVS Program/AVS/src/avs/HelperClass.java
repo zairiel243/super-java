@@ -161,7 +161,7 @@ public class HelperClass {
                 break;
             case GlobalConstants.VOTER : 
                 break;
-            default: HelperClass.infoBox("User not found", "Login Error");
+            default: HelperClass.infoBox("Incorrect username or password.", "Login Error");
         }
     }
     

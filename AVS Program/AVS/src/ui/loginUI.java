@@ -211,11 +211,15 @@ public class loginUI extends javax.swing.JFrame {
         String username = usernameField.getText();
         String type = HelperClass.login(username,
                 passwordField.getText());
+        if(type.equals("false")){
+            HelperClass.infoBox("Incorrect username or password.", "Login error");
+        }else{
+            //redirect page, else input info again if no user info
+            HelperClass.redirect(type, username);
+            this.setVisible(false);
+        }
         
-        //redirect page
-        HelperClass.redirect(type, username);
 
-        this.setVisible(false);
     }//GEN-LAST:event_loginButtonMouseClicked
 
     /**
