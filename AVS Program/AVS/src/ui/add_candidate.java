@@ -195,24 +195,33 @@ public class add_candidate extends javax.swing.JFrame {
             new fieldError("addCandidate", "Candidates are full!").setVisible(true);
         } else {
             Candidates newCandidate = new Candidates(firstnameField.getText(),
-                                                     lastnameField.getText(),
-                                                     (String) positionComboBox.getSelectedItem(),
-                                                     (String) partyComboBox.getSelectedItem(),
-                                                     currentOfficer);
+                                    lastnameField.getText(),
+                                    (String) positionComboBox.getSelectedItem(),
+                                    (String) partyComboBox.getSelectedItem(),
+                                    currentOfficer);
+            
             AVS.getCandidates().put(newCandidate.getId(), newCandidate);
         }               
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         new officer_landing().setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_cancelButtonActionPerformed
     
     void check(){
         if(firstnameField.getText().equals("") || lastnameField.getText().equals("")){
             new fieldError("addCandidate").setVisible(true);
-        }else{            
-            new success("addCandidate").setVisible(true);
+        }else{     
+            //if candidate already exists
+            if(HelperClass.checkCandidate(firstnameField.getText(),
+                lastnameField.getText()) == true){
+                
+                new fieldError("addCandidate").setVisible(true);
+            }else{
+                new success("addCandidate").setVisible(true);
+            }
+            
         }
         
         this.dispose();
