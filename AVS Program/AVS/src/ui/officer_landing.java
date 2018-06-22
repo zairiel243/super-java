@@ -79,7 +79,7 @@ public class officer_landing extends javax.swing.JFrame {
 
         removeCandidateButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         removeCandidateButton.setForeground(new java.awt.Color(255, 255, 255));
-        removeCandidateButton.setText("Remove Candidate");
+        removeCandidateButton.setText("Remove/Update Candidate");
         removeCandidateButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         removeCandidateButton.setContentAreaFilled(false);
         removeCandidateButton.addActionListener(new java.awt.event.ActionListener() {
