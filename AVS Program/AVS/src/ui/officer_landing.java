@@ -131,17 +131,17 @@ public class officer_landing extends javax.swing.JFrame {
 
     private void addCandidateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCandidateButtonActionPerformed
         new add_candidate().setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_addCandidateButtonActionPerformed
 
     private void removeCandidateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCandidateButtonActionPerformed
         new remove_candidate().setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_removeCandidateButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         new loginUI().setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_exitButtonActionPerformed
 
     /**
