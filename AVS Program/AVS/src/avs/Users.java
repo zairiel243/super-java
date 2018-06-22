@@ -22,6 +22,9 @@ public class Users {
     private Date date_added;
     private Date date_edited;
     private boolean voteStatus; // check if a voter has voted or not
+    private int ID;
+    static int count = 1;
+    
     /*
      * Constructor
      */
@@ -35,6 +38,8 @@ public class Users {
         this.added_by = added_by;
         this.date_added = new Date();
         voteStatus = false;
+        ID = count;
+        count++;
     }
             
         
@@ -95,5 +100,8 @@ public class Users {
     }
     public boolean getVoteStatus(){
         return voteStatus;
+    }
+    public int getID(){
+        return ID;
     }
 }

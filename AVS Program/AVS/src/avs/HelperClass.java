@@ -20,7 +20,7 @@ import ui.voter_landing_page;
 public class HelperClass {
     
     /************Variables***************/
-    private static Map<String, Users> users;
+    private static Map<Integer, Users> users;
     private static Map<Integer, Candidates> candidates;
     private static Map<String, Integer> candidate_count;
     private static Map<String, Integer> max_candidate_count;
@@ -77,23 +77,23 @@ public class HelperClass {
     
     //checks if at least one voter has voted, will set editStatus to false
     public void checkEditStatus(){
-       if( users.get("voter1").getVoteStatus() == true ||
-            users.get("voter2").getVoteStatus() == true ||
-            users.get("voter3").getVoteStatus() == true ){
+       if( users.get(4).getVoteStatus() == true ||
+            users.get(5).getVoteStatus() == true ||
+            users.get(6).getVoteStatus() == true ){
             editStatus = false;
        }
     }
     //returns number of voters who already voted
     public int getNoOfActualVoters(){
-       if( users.get("voter1").getVoteStatus() == true){
+       if( users.get(4).getVoteStatus() == true){
            noOfActualVoters++;
        }
        
-       if( users.get("voter2").getVoteStatus() == true){
+       if( users.get(5).getVoteStatus() == true){
            noOfActualVoters++;
        }
        
-       if( users.get("voter3").getVoteStatus() == true){
+       if( users.get(6).getVoteStatus() == true){
           noOfActualVoters++;
        }
        
@@ -110,13 +110,29 @@ public class HelperClass {
 
         String ret;
         try{
-            Users user = users.get(username);
             
+            Users user = getUser(username);
+
             ret = user.getPassword().equals(password) ? user.getType() : "false";
+            
+            
         }catch(NullPointerException e){
             ret = "false" ;
         }
           
+        return ret;
+    }
+    
+    public static Users getUser(String username){
+  
+        Users ret = null;
+        for( Map.Entry<Integer, Users> entry : users.entrySet()){
+            
+            if(entry.getValue().getUsername().equals(username) ){
+                ret =  entry.getValue();
+                break;
+            }
+        }
         return ret;
     }
     
@@ -136,6 +152,7 @@ public class HelperClass {
         return ret;
     }
     
+    /**************** OFFICER METHODS ***************/
     //add a new candidate
     public static void addCandidate(Candidates newCandidate){
         candidates.put(newCandidate.getId(), newCandidate);
@@ -150,6 +167,24 @@ public class HelperClass {
     public static void updateCandidate(Candidates candidate){
         candidates.put(candidate.getId(), candidate);
     }
+    
+    /*************** SUPER USER METHODS ***************/
+    
+    //add a new officer
+    public static void addOfficer(Users newUser){
+        users.put(newUser.getID(), newUser);
+    }
+    
+    //remove a officer
+    public static void removeOfficer(Users user){
+        users.remove(user.getID());
+    }
+    
+    //update an officer
+    public static void updateOfficer(Users user){
+        users.put(user.getID(), user);
+    }
+    
     
     //redirect to correct page according to user type
     public static void redirect(String type, String username){

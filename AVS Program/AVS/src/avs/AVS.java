@@ -143,7 +143,7 @@ public class AVS {
             "District Representative", "Communist", "officer2");
 
     /****** Variables ********************************************************/
-    private static Map<String, Users> users = new HashMap<>();
+    private static Map<Integer, Users> users = new HashMap<>();
     private static Map<Integer, Candidates> candidates = new HashMap<>();
     private static Map<String, Integer> candidate_count = new HashMap<>();
     private static Map<String, Integer> max_candidate_count = new HashMap<>();
@@ -202,7 +202,7 @@ public class AVS {
     /*** getters
      * @return  ***/
     
-    public static Map<String, Users> getUsers(){
+    public static Map<Integer, Users> getUsers(){
         return users;
     }
     
@@ -224,12 +224,12 @@ public class AVS {
     /**** setters ****/
     private static void setUsers(){
         
-        users.put("superuser", p1);
-        users.put("officer1", p2);
-        users.put("officer2", p3);
-        users.put("voter1", p4);
-        users.put("voter2", p5);
-        users.put("voter3", p6);
+        users.put(p1.getID(), p1);
+        users.put(p1.getID(), p2);
+        users.put(p3.getID(), p3);
+        users.put(p4.getID(), p4);
+        users.put(p5.getID(), p5);
+        users.put(p6.getID(), p6);
     
     }
     
