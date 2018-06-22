@@ -225,7 +225,7 @@ public class AVS {
     private static void setUsers(){
         
         users.put(p1.getID(), p1);
-        users.put(p1.getID(), p2);
+        users.put(p2.getID(), p2);
         users.put(p3.getID(), p3);
         users.put(p4.getID(), p4);
         users.put(p5.getID(), p5);

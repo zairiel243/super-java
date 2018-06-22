@@ -206,6 +206,10 @@ public class HelperClass {
                     titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
     
+    public static int confirmBox(String message){
+        return JOptionPane.showConfirmDialog(null, message );
+    }
+    
     //initialize local static variables from AVS class.
     public static void setHelperClass(){
         users = AVS.getUsers();

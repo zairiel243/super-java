@@ -42,6 +42,18 @@ public class Users {
         count++;
     }
             
+    public Users(String first_name, String last_name, String username,
+            String password, String type, String added_by, int ID){
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.username = username;
+        this.password = password;
+        this.type = type;
+        this.added_by = added_by;
+        this.date_added = new Date();
+        voteStatus = false;
+        this.ID = ID;
+    }
         
     /*
      * Setters
