@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 package ui;
+import avs.AVS;
 import static avs.AVS.*;
+import avs.Candidates;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Map;
+import javax.swing.AbstractButton;
 /**
  *
  * @author Sarausad
@@ -340,9 +346,39 @@ public class voter_landing_page2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox16ActionPerformed
 
     private void voteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voteButtonActionPerformed
-        // TODO add your handling code here:
+        String votedMayor = getRadioButton(mayor.getElements());
+        String votedGovernor = getRadioButton(governor.getElements());
+        
+        // to allow hash map to be iterated: must use entrySet() and Iterator Class
+        Iterator it = AVS.getCandidates().entrySet().iterator();
+        
+        while(it.hasNext()){
+            Map.Entry pair = (Map.Entry) it.next();
+            Candidates value = (Candidates) pair.getValue();    //assigning `value` the value part of the hashmap
+            Integer key = (Integer) pair.getKey();
+            String candidateName = value.getLast_name()+", "+value.getFirst_name(); // im using the fullname of the candidate in "Lastname, Firstname"
+                                                                                    // bcs that's what getRadioButton(); returns -- the fullname
+            if(candidateName.equals(votedMayor)) {
+                AVS.getCandidates().get(key).setVotes();
+            } else if(candidateName.equals(votedGovernor)){ 
+                AVS.getCandidates().get(key).setVotes();
+            }
+        }
+        
+        new voter_summary().setVisible(true);
+        this.dispose();               
     }//GEN-LAST:event_voteButtonActionPerformed
-
+    
+    String getRadioButton(Enumeration<AbstractButton> buttons) {  
+        while (buttons.hasMoreElements()) {
+            AbstractButton button = buttons.nextElement();
+            if (button.isSelected()) {
+                    return button.getText();
+            }
+        }
+        return null;
+    }
+    
     void populateFields(){
         // governor
             jRadioButton1.setText(p23.getLast_name()+", "+p23.getFirst_name());

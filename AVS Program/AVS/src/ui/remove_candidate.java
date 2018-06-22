@@ -129,7 +129,6 @@ public class remove_candidate extends javax.swing.JFrame {
         jLabel6.setText("ID");
 
         idComboBox.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        idComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         idComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idComboBoxActionPerformed(evt);
@@ -239,18 +238,17 @@ public class remove_candidate extends javax.swing.JFrame {
                                                  (String) positionComboBox.getSelectedItem(),
                                                  (String) partyComboBox.getSelectedItem(),
                                                  currentOfficer);
-        avs.getCandidates().put(((int) idComboBox.getSelectedItem()), newCandidate);        
+        avs.getCandidates().replace(((int) idComboBox.getSelectedItem()), newCandidate);        
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void idComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idComboBoxActionPerformed
         // TODO add your handling code here:
-        System.out.println(idComboBox.getSelectedItem());
-        Candidates temp = (Candidates) AVS.getCandidates().get((int)idComboBox.getSelectedItem());
-        System.out.println(temp);
-//        firstnameField.setText(temp.getFirst_name());
-//        lastnameField.setText(temp.getLast_name());
-//        partyComboBox.setSelectedItem(temp.getParty());
-//        positionComboBox.setSelectedItem(temp.getPosition());
+        System.out.println(idComboBox.getSelectedItem() instanceof String);        
+        Candidates temp = (Candidates) AVS.getCandidates().get(idComboBox.getSelectedItem());
+        firstnameField.setText(temp.getFirst_name());
+        lastnameField.setText(temp.getLast_name());
+        partyComboBox.setSelectedItem(temp.getParty());
+        positionComboBox.setSelectedItem(temp.getPosition());
     }//GEN-LAST:event_idComboBoxActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -271,9 +269,9 @@ public class remove_candidate extends javax.swing.JFrame {
     void initComboBox(){
         
         Map<Integer, Candidates> temp = AVS.getCandidates(); //AVS.getCandidates() returns {} for some reason
-        ArrayList<String> allKeys = new ArrayList<String>();
+        ArrayList<Integer> allKeys = new ArrayList<Integer>();
         for(Integer key : temp.keySet()){
-            allKeys.add(String.valueOf(key));
+            allKeys.add(key);
         }
         
         idComboBox.setModel(new javax.swing.DefaultComboBoxModel(allKeys.toArray()));
@@ -317,7 +315,7 @@ public class remove_candidate extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JTextField firstnameField;
-    public static javax.swing.JComboBox<String> idComboBox;
+    public static javax.swing.JComboBox<Integer> idComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

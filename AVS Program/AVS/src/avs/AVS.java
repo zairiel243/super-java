@@ -8,6 +8,7 @@ package avs;
 import java.util.HashMap;
 import java.util.Map;
 import ui.loginUI;
+import ui.voter_landing_page;
 
 
 /** History
@@ -154,7 +155,8 @@ public class AVS {
         avs.setCandidateCount();
         //Populate max candidate count
         avs.setMaxCandidateCount();
-        new loginUI().setVisible(true);
+//        new loginUI().setVisible(true); // le me comment this out i wanna test voters
+        new voter_landing_page().setVisible(true);
     }
     
     public void print(){

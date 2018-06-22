@@ -8,6 +8,13 @@ import static avs.AVS.*;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
 import avs.AVS;
+import avs.Candidates;
+import java.awt.Component;
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import javax.swing.JCheckBox;
 
 /**
  *
@@ -34,7 +41,6 @@ public class voter_landing_page extends javax.swing.JFrame {
 
         presidents = new javax.swing.ButtonGroup();
         vicepresidents = new javax.swing.ButtonGroup();
-        senators = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -186,7 +192,6 @@ public class voter_landing_page extends javax.swing.JFrame {
         jSeparator2.setBounds(20, 210, 550, 10);
 
         jCheckBox1.setBackground(new java.awt.Color(229, 93, 95));
-        senators.add(jCheckBox1);
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("jCheckBox1");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -198,28 +203,24 @@ public class voter_landing_page extends javax.swing.JFrame {
         jCheckBox1.setBounds(50, 280, 130, 23);
 
         jCheckBox2.setBackground(new java.awt.Color(229, 93, 95));
-        senators.add(jCheckBox2);
         jCheckBox2.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox2.setText("jCheckBox2");
         jPanel1.add(jCheckBox2);
         jCheckBox2.setBounds(180, 280, 130, 20);
 
         jCheckBox3.setBackground(new java.awt.Color(229, 93, 95));
-        senators.add(jCheckBox3);
         jCheckBox3.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox3.setText("jCheckBox3");
         jPanel1.add(jCheckBox3);
         jCheckBox3.setBounds(310, 280, 130, 20);
 
         jCheckBox4.setBackground(new java.awt.Color(229, 93, 95));
-        senators.add(jCheckBox4);
         jCheckBox4.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox4.setText("jCheckBox4");
         jPanel1.add(jCheckBox4);
         jCheckBox4.setBounds(440, 280, 130, 20);
 
         jCheckBox5.setBackground(new java.awt.Color(229, 93, 95));
-        senators.add(jCheckBox5);
         jCheckBox5.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox5.setText("jCheckBox5");
         jPanel1.add(jCheckBox5);
@@ -231,7 +232,6 @@ public class voter_landing_page extends javax.swing.JFrame {
         jLabel13.setBounds(200, 400, 110, 14);
 
         jCheckBox6.setBackground(new java.awt.Color(229, 93, 95));
-        senators.add(jCheckBox6);
         jCheckBox6.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox6.setText("jCheckBox1");
         jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
@@ -243,28 +243,24 @@ public class voter_landing_page extends javax.swing.JFrame {
         jCheckBox6.setBounds(180, 330, 130, 20);
 
         jCheckBox7.setBackground(new java.awt.Color(229, 93, 95));
-        senators.add(jCheckBox7);
         jCheckBox7.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox7.setText("jCheckBox2");
         jPanel1.add(jCheckBox7);
         jCheckBox7.setBounds(310, 330, 130, 20);
 
         jCheckBox8.setBackground(new java.awt.Color(229, 93, 95));
-        senators.add(jCheckBox8);
         jCheckBox8.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox8.setText("jCheckBox3");
         jPanel1.add(jCheckBox8);
         jCheckBox8.setBounds(440, 330, 130, 20);
 
         jCheckBox9.setBackground(new java.awt.Color(229, 93, 95));
-        senators.add(jCheckBox9);
         jCheckBox9.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox9.setText("jCheckBox4");
         jPanel1.add(jCheckBox9);
         jCheckBox9.setBounds(50, 380, 130, 23);
 
         jCheckBox10.setBackground(new java.awt.Color(229, 93, 95));
-        senators.add(jCheckBox10);
         jCheckBox10.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox10.setText("jCheckBox5");
         jPanel1.add(jCheckBox10);
@@ -360,8 +356,24 @@ public class voter_landing_page extends javax.swing.JFrame {
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         String votedPresident = getRadioButton(presidents.getElements());
         String votedVice = getRadioButton(vicepresidents.getElements());
+        ArrayList<String> checked = getCheckBoxes(jPanel1);
+        // to allow hash map to be iterated: must use entrySet() and Iterator Class
+        Iterator it = AVS.getCandidates().entrySet().iterator();
         
-        
+        while(it.hasNext()){
+            Map.Entry pair = (Map.Entry) it.next();
+            Candidates value = (Candidates) pair.getValue();    //assigning `value` the value part of the hashmap
+            Integer key = (Integer) pair.getKey();
+            String candidateName = value.getLast_name()+", "+value.getFirst_name(); // im using the fullname of the candidate in "Lastname, Firstname"
+                                                                                    // bcs that's what getRadioButton(); returns -- the fullname
+            if(candidateName.equals(votedPresident)) {
+                AVS.getCandidates().get(key).setVotes();
+            } else if(candidateName.equals(votedVice)){ 
+                AVS.getCandidates().get(key).setVotes();
+            } else if (checked.contains(candidateName)){
+                AVS.getCandidates().get(key).setVotes();
+            }
+        }
         
         new voter_landing_page2().setVisible(true);
         this.dispose();
@@ -375,6 +387,22 @@ public class voter_landing_page extends javax.swing.JFrame {
             }
         }
         return null;
+    }
+    
+    ArrayList<String> getCheckBoxes(javax.swing.JPanel panel){
+        Component[] comps = panel.getComponents();
+        ArrayList<String> checked = new ArrayList<>(); 
+        
+        for(Component comp : comps){
+            if(comp instanceof JCheckBox){
+                JCheckBox box = (JCheckBox) comp;
+                if(box.isSelected()){
+                    checked.add(box.getText());
+                }
+            }            
+        }
+        
+        return checked;
     }
     
     void evaluateChecked(Enumeration<AbstractButton> buttons){
@@ -501,7 +529,6 @@ public class voter_landing_page extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton nextButton;
     private javax.swing.ButtonGroup presidents;
-    private javax.swing.ButtonGroup senators;
     private javax.swing.ButtonGroup vicepresidents;
     // End of variables declaration//GEN-END:variables
 }
