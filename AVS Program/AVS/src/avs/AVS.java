@@ -7,13 +7,8 @@ package avs;
 
 import java.util.HashMap;
 import java.util.Map;
-<<<<<<< HEAD
 import ui.loginUI;
 import ui.voter_landing_page;
-
-=======
-import avs.GlobalConstants;
->>>>>>> daa742717e47df4ca4177fae36a9c6105ca0f31e
 
 /** History
  *
@@ -174,22 +169,13 @@ public class AVS {
         return true;
     }
     
-    /*public static String login(String username, String password){
-        String ret = "false";
-        Users user = users.get(username);
-        if(user == null){
-            return ret;
-        }else if(!user.getPassword().equals(password)){
-            return ret;
-        }
-        return user.getType();
-    }*/
-    
     public static void main(String[] args) {
         
        
        // AVS avs = new AVS();
         //avs.populate(avs);
+        populate();
+        new loginUI().setVisible(true);
        
  
     }
@@ -201,13 +187,7 @@ public class AVS {
         //Populate candidate count per category
         AVS.setCandidateCount();
         //Populate max candidate count
-<<<<<<< HEAD
-        avs.setMaxCandidateCount();
-//        new loginUI().setVisible(true); // le me comment this out i wanna test voters
-        new voter_landing_page().setVisible(true);
-=======
-        AVS.setMaxCandidateCount();
->>>>>>> daa742717e47df4ca4177fae36a9c6105ca0f31e
+        AVS.setMaxCandidateCount();        
     }
     
 

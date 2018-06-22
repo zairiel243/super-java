@@ -242,8 +242,7 @@ public class remove_candidate extends javax.swing.JFrame {
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void idComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idComboBoxActionPerformed
-        // TODO add your handling code here:
-        System.out.println(idComboBox.getSelectedItem() instanceof String);        
+        // TODO add your handling code here:       
         Candidates temp = (Candidates) AVS.getCandidates().get(idComboBox.getSelectedItem());
         firstnameField.setText(temp.getFirst_name());
         lastnameField.setText(temp.getLast_name());
@@ -260,7 +259,7 @@ public class remove_candidate extends javax.swing.JFrame {
         if(firstnameField.getText().equals("") || lastnameField.getText().equals("")){
             new fieldError("updateCandidate").setVisible(true);
         }else{            
-            new areyousure("updateCandidate", "Update Candidate no. "+ (String) idComboBox.getSelectedItem(), (String) idComboBox.getSelectedItem()).setVisible(true);
+            new areyousure("updateCandidate", "Update Candidate no. "+ (String) idComboBox.getSelectedItem(), (Integer) idComboBox.getSelectedItem()).setVisible(true);
         }
         
         this.dispose();
@@ -269,7 +268,7 @@ public class remove_candidate extends javax.swing.JFrame {
     void initComboBox(){
         
         Map<Integer, Candidates> temp = AVS.getCandidates(); //AVS.getCandidates() returns {} for some reason
-        ArrayList<Integer> allKeys = new ArrayList<Integer>();
+        ArrayList<Integer> allKeys = new ArrayList<>();
         for(Integer key : temp.keySet()){
             allKeys.add(key);
         }

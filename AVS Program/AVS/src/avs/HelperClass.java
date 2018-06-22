@@ -7,6 +7,7 @@ package avs;
 
 import java.util.Map;
 import javax.swing.JOptionPane;
+import ui.SuperuserUI;
 import ui.officer_landing;
 import ui.voter_landing_page;
 
@@ -189,12 +190,14 @@ public class HelperClass {
     //redirect to correct page according to user type
     public static void redirect(String type, String username){
         switch(type){
-            case GlobalConstants.SUPERUSER : new voter_landing_page().setVisible(true);
+            case GlobalConstants.SUPERUSER : 
+                new SuperuserUI().setVisible(true);
                 break;
             case GlobalConstants.OFFICER : 
                 new officer_landing(username).setVisible(true);
                 break;
             case GlobalConstants.VOTER : 
+                new voter_landing_page().setVisible(true);
                 break;
             default: HelperClass.infoBox("Incorrect username or password.", "Login Error");
         }
