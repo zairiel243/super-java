@@ -7,6 +7,7 @@ package ui;
 
 import avs.AVS;
 import avs.Candidates;
+import avs.HelperClass;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +23,8 @@ public class officer_landing extends javax.swing.JFrame {
     public officer_landing() {
         initComponents();
         populateTable();
+        AVS.populate();
+        HelperClass.setHelperClass();
     }
     
     public officer_landing(String username) {

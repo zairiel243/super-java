@@ -11,6 +11,7 @@ import avs.HelperClass;
 import avs.Users;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -41,7 +42,9 @@ public class SuperuserUI extends javax.swing.JFrame {
     
     public SuperuserUI(String x){
         initComponents();
-        
+        users = AVS.getUsers();
+        typeLabel.setVisible(false);
+        typeCombo.setVisible(false);
     }
     
     private void clean(){
@@ -53,7 +56,7 @@ public class SuperuserUI extends javax.swing.JFrame {
     
     private void populateTables(){
         //officer table
-        table1 = (DefaultTableModel) officerTable.getModel();
+        table1 = (DefaultTableModel) voterTable.getModel();
         table1.setRowCount(0);
      //   ArrayList<Users> beans =  new ArrayList<Users>(users.values());
         
@@ -70,7 +73,7 @@ public class SuperuserUI extends javax.swing.JFrame {
         }
         
         //voter table
-        table2 = (DefaultTableModel) voterTable.getModel();
+        table2 = (DefaultTableModel) officerTable.getModel();
         table2.setRowCount(0);
         
         for( Map.Entry<Integer, Users> entry : users.entrySet()){
@@ -99,9 +102,9 @@ public class SuperuserUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        officerTable = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
         voterTable = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        officerTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         userInfoPanel = new javax.swing.JPanel();
@@ -131,47 +134,6 @@ public class SuperuserUI extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("WELCOME SUPERUSER");
 
-        officerTable.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        officerTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "NAME"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        officerTable.setColumnSelectionAllowed(true);
-        officerTable.getTableHeader().setReorderingAllowed(false);
-        officerTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                officerTableMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(officerTable);
-        officerTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (officerTable.getColumnModel().getColumnCount() > 0) {
-            officerTable.getColumnModel().getColumn(0).setMinWidth(40);
-            officerTable.getColumnModel().getColumn(0).setPreferredWidth(40);
-            officerTable.getColumnModel().getColumn(0).setMaxWidth(40);
-            officerTable.getColumnModel().getColumn(1).setResizable(false);
-            officerTable.getColumnModel().getColumn(1).setPreferredWidth(100);
-        }
-
         voterTable.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         voterTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -196,13 +158,14 @@ public class SuperuserUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        voterTable.setColumnSelectionAllowed(true);
         voterTable.getTableHeader().setReorderingAllowed(false);
         voterTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 voterTableMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(voterTable);
+        jScrollPane1.setViewportView(voterTable);
         voterTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (voterTable.getColumnModel().getColumnCount() > 0) {
             voterTable.getColumnModel().getColumn(0).setMinWidth(40);
@@ -210,6 +173,46 @@ public class SuperuserUI extends javax.swing.JFrame {
             voterTable.getColumnModel().getColumn(0).setMaxWidth(40);
             voterTable.getColumnModel().getColumn(1).setResizable(false);
             voterTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        }
+
+        officerTable.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        officerTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "NAME"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        officerTable.getTableHeader().setReorderingAllowed(false);
+        officerTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                officerTableMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(officerTable);
+        officerTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (officerTable.getColumnModel().getColumnCount() > 0) {
+            officerTable.getColumnModel().getColumn(0).setMinWidth(40);
+            officerTable.getColumnModel().getColumn(0).setPreferredWidth(40);
+            officerTable.getColumnModel().getColumn(0).setMaxWidth(40);
+            officerTable.getColumnModel().getColumn(1).setResizable(false);
+            officerTable.getColumnModel().getColumn(1).setPreferredWidth(100);
         }
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -397,7 +400,7 @@ public class SuperuserUI extends javax.swing.JFrame {
                                             .addComponent(removeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,10 +440,7 @@ public class SuperuserUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,14 +451,14 @@ public class SuperuserUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void officerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_officerTableMouseClicked
+    private void voterTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voterTableMouseClicked
         // TODO add your handling code here:
         typeLabel.setVisible(false);
         typeCombo.setVisible(false);
         removeBtn.setVisible(true);
         updateBtn.setVisible(true);
          addUserBtn.setVisible(true);
-        selected = officerTable.rowAtPoint(evt.getPoint());
+        selected = voterTable.rowAtPoint(evt.getPoint());
         
         if(selected > -1){
             
@@ -472,9 +472,9 @@ public class SuperuserUI extends javax.swing.JFrame {
             unameField.setText( selectedUser.getUsername());
             passwordField.setText( selectedUser.getPassword());
         }
-    }//GEN-LAST:event_officerTableMouseClicked
+    }//GEN-LAST:event_voterTableMouseClicked
 
-    private void voterTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voterTableMouseClicked
+    private void officerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_officerTableMouseClicked
         // TODO add your handling code here:
 
         typeLabel.setVisible(false);
@@ -482,7 +482,7 @@ public class SuperuserUI extends javax.swing.JFrame {
         removeBtn.setVisible(true);
         updateBtn.setVisible(true);
         addUserBtn.setVisible(true);
-         selected = officerTable.rowAtPoint(evt.getPoint());
+         selected = voterTable.rowAtPoint(evt.getPoint());
 
         if(selected > -1){
 
@@ -496,7 +496,7 @@ public class SuperuserUI extends javax.swing.JFrame {
             passwordField.setText( selectedUser.getPassword());
         }
 
-    }//GEN-LAST:event_voterTableMouseClicked
+    }//GEN-LAST:event_officerTableMouseClicked
 
     private void addUserBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addUserBtnMouseClicked
         // TODO add your handling code here:
@@ -554,21 +554,34 @@ public class SuperuserUI extends javax.swing.JFrame {
         String type = typeCombo.getSelectedItem().toString();
         if(!fnameField.getText().equals("") && !lnameField.getText().equals("") &&
                 !unameField.getText().equals("") && !passwordField.getText().equals("")){
-            String fname = fnameField.getText();
-            String lname = lnameField.getText();
-            String uname = unameField.getText();
-            String pword = passwordField.getText();
-            Users u = new Users(fname, lname, uname, pword,
-            type, GlobalConstants.SUPERUSER);
-            if(HelperClass.confirmBox("Are you sure you want to add user?")
-                == JOptionPane.YES_OPTION ){
+            
+             if (Pattern.matches("[a-zA-Z]+", fnameField.getText())
+                && Pattern.matches("[a-zA-Z]+", lnameField.getText())
+                ){
+            
+                  String fname = fnameField.getText();
+                String lname = lnameField.getText();
+                String uname = unameField.getText();
+                String pword = passwordField.getText();
+                Users u = new Users(fname, lname, uname, pword,
+                type, GlobalConstants.SUPERUSER);
+                if(HelperClass.confirmBox("Are you sure you want to add user?")
+                    == JOptionPane.YES_OPTION ){
+
+                    HelperClass.addOfficer(u);
+                     HelperClass.infoBox("Added new user!", "Announcement");
+                     populateTables();
+                     clean();
+                }
                 
-                HelperClass.addOfficer(u);
-                 HelperClass.infoBox("Added new user!", "Announcement");
-                 populateTables();
-                 clean();
-            }
+            
+            }else{
+               
            
+            HelperClass.infoBox("Only alpha characters for name.", "Error");
+             }
+
+        
         }else{
             HelperClass.infoBox("Missing fields.", "Error");
         }
