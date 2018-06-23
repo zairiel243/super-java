@@ -8,7 +8,9 @@ package ui;
 import avs.AVS;
 import avs.Candidates;
 import avs.HelperClass;
+import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,17 +22,29 @@ public class officer_landing extends javax.swing.JFrame {
     /**
      * Creates new form officer_landing
      */
+    
+    private int selected, selectedID;
+    private Candidates selectedCandidate;
+    private DefaultTableModel model;
+    private static Map<Integer, Candidates> candidates;
     public officer_landing() {
         initComponents();
-        populateTable();
+        
         AVS.populate();
         HelperClass.setHelperClass();
+       
+        candidates = AVS.getCandidates();
+         populateTable();
     }
     
     public officer_landing(String username) {
         currentOfficer = username;        
-        initComponents();        
-        populateTable();
+        initComponents();   
+        AVS.populate();
+        HelperClass.setHelperClass();
+       
+         candidates = AVS.getCandidates();
+          populateTable();
     }
 
     /**
@@ -48,7 +62,8 @@ public class officer_landing extends javax.swing.JFrame {
         exitButton = new javax.swing.JButton();
         removeCandidateButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        candidateTable = new javax.swing.JTable();
+        updateBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,7 +97,7 @@ public class officer_landing extends javax.swing.JFrame {
 
         removeCandidateButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         removeCandidateButton.setForeground(new java.awt.Color(255, 255, 255));
-        removeCandidateButton.setText("Remove/Update Candidate");
+        removeCandidateButton.setText("Remove Candidate");
         removeCandidateButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         removeCandidateButton.setContentAreaFilled(false);
         removeCandidateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +106,7 @@ public class officer_landing extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        candidateTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -114,30 +129,51 @@ public class officer_landing extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        candidateTable.setColumnSelectionAllowed(true);
+        candidateTable.getTableHeader().setReorderingAllowed(false);
+        candidateTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                candidateTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(candidateTable);
+        candidateTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        updateBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        updateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        updateBtn.setText("Update Candidate");
+        updateBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        updateBtn.setContentAreaFilled(false);
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(269, 269, 269))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(helloText, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
-                        .addComponent(addCandidateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addCandidateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(removeCandidateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                        .addComponent(removeCandidateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(96, 96, 96))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(helloText, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 377, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -146,11 +182,12 @@ public class officer_landing extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(helloText, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(removeCandidateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addCandidateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addCandidateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -177,19 +214,46 @@ public class officer_landing extends javax.swing.JFrame {
     }//GEN-LAST:event_addCandidateButtonActionPerformed
 
     private void removeCandidateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCandidateButtonActionPerformed
-        new remove_candidate().setVisible(true);
-        this.setVisible(false);
+       // new remove_candidate().setVisible(true);
+        //this.setVisible(false);
+        
+        if(HelperClass.confirmBox("Are you sure you want to delete selected candidate?")
+                == JOptionPane.YES_OPTION ){
+            HelperClass.removeCandidate(selectedCandidate);
+            HelperClass.infoBox("Removed candidate!", "Announcement");
+            populateTable();
+        }
     }//GEN-LAST:event_removeCandidateButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         new loginUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_exitButtonActionPerformed
-    
-    void populateTable(){
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+    private void candidateTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_candidateTableMouseClicked
+        // TODO add your handling code here:
+        selected = candidateTable.rowAtPoint(evt.getPoint());
+        if(selected > -1){
+
+            selectedID = (int) model.getValueAt(selected, 0);
+            System.out.print("Selected id - "+selectedID);
+
+            selectedCandidate = candidates.get(selectedID);
+            System.out.print(selectedCandidate.getFirst_name());
+           
+        }
+    }//GEN-LAST:event_candidateTableMouseClicked
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
         
-        for(Map.Entry<Integer, Candidates> entry : AVS.getCandidates().entrySet()){            
+    }//GEN-LAST:event_updateBtnActionPerformed
+    
+    private void populateTable(){
+        model = (DefaultTableModel) candidateTable.getModel();
+        model.setRowCount(0);
+        
+        for(Map.Entry<Integer, Candidates> entry : candidates.entrySet()){            
             Candidates temp = entry.getValue();
             
             model.addRow(new Object[]{
@@ -241,11 +305,12 @@ public class officer_landing extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCandidateButton;
+    private javax.swing.JTable candidateTable;
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel helloText;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton removeCandidateButton;
+    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }
